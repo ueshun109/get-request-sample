@@ -9,41 +9,68 @@ import SwiftUI
 
 struct ContentView: View {
   @Get(\.users, .fakes) var users
+  @Get(\.songs, .fakes) var songs
 
   var body: some View {
     Group {
-      switch users {
-      case .success(let response):
-        list(response)
-      case .failure(let e):
+      switch (users, songs) {
+      case (.success(let users), .success(let songs)):
+        List {
+          usersSection(users)
+          songsSection(songs)
+        }
+      case (.failure(let e), _), (_, .failure(let e)):
         error(e)
-      case .loading(let fake):
+      case (.loading(let users), .loading(let songs)):
         Group {
-          if let fake {
-            list(fake)
-              .redacted(reason: .placeholder)
-              .transition(.opacity)
-              .disabled(true)
+          if let users, let songs {
+            List {
+              usersSection(users)
+              songsSection(songs)
+            }
           } else {
             ProgressView()
           }
         }
+        .redacted(reason: .placeholder)
+        .transition(.opacity)
+        .disabled(true)
         .task {
-          await _users.requestUsers()
+          async let a: () = _users.requestUsers()
+          async let b: () = _songs.requestSongs()
+          _ = await (a, b)
         }
+      default:
+        EmptyView()
       }
     }
     .animation(.default, value: users)
+    .animation(.default, value: songs)
   }
 
-  func list(_ users: [User]) -> some View {
-    List {
+  func usersSection(_ users: [User]) -> some View {
+    Section {
       ForEach(users) { user in
         HStack {
           Text(user.firstName)
           Text(user.lastName)
         }
       }
+    } header: {
+      Text("Users")
+    }
+  }
+
+  func songsSection(_ songs: [Song]) -> some View {
+    Section {
+      ForEach(songs) { song in
+        HStack {
+          Text(song.title)
+          Text(song.artist)
+        }
+      }
+    } header: {
+      Text("Songs")
     }
   }
 

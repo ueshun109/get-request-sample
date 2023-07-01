@@ -15,6 +15,7 @@
 		6F8D622F2A505CEF0018D5D5 /* LoadState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8D622E2A505CEF0018D5D5 /* LoadState.swift */; };
 		6F8D62312A505DD90018D5D5 /* Lateinit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8D62302A505DD90018D5D5 /* Lateinit.swift */; };
 		6F8D62332A505E700018D5D5 /* UserDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8D62322A505E700018D5D5 /* UserDataSource.swift */; };
+		6F8D62352A50665B0018D5D5 /* SongDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8D62342A50665B0018D5D5 /* SongDataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		6F8D622E2A505CEF0018D5D5 /* LoadState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadState.swift; sourceTree = "<group>"; };
 		6F8D62302A505DD90018D5D5 /* Lateinit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lateinit.swift; sourceTree = "<group>"; };
 		6F8D62322A505E700018D5D5 /* UserDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataSource.swift; sourceTree = "<group>"; };
+		6F8D62342A50665B0018D5D5 /* SongDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongDataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +67,7 @@
 				6F8D622C2A505CE30018D5D5 /* GetRequest.swift */,
 				6F8D62302A505DD90018D5D5 /* Lateinit.swift */,
 				6F8D622E2A505CEF0018D5D5 /* LoadState.swift */,
+				6F8D62342A50665B0018D5D5 /* SongDataSource.swift */,
 				6F8D62322A505E700018D5D5 /* UserDataSource.swift */,
 				6F8D62212A505CC30018D5D5 /* Assets.xcassets */,
 				6F8D62232A505CC30018D5D5 /* get_request_sample.entitlements */,
@@ -151,6 +154,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F8D62352A50665B0018D5D5 /* SongDataSource.swift in Sources */,
 				6F8D62202A505CC10018D5D5 /* ContentView.swift in Sources */,
 				6F8D621E2A505CC10018D5D5 /* App.swift in Sources */,
 				6F8D622D2A505CE30018D5D5 /* GetRequest.swift in Sources */,

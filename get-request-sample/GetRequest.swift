@@ -31,10 +31,25 @@ extension Get {
   struct EndpointValues {
     /// /v1/users
     @Lateinit var users: [User]
+    /// /v1/songs
+    @Lateinit var songs: [Song]
   }
 }
 
 extension Get {
+  /// /v1/songs
+  func requestSongs(songDataSource: SongDataSource = .mock) async {
+    do {
+      try! await Task.sleep(nanoseconds: 1_000_000_000)
+      let response = try await songDataSource.fetchSongs()
+      var endpointValue = EndpointValues()
+      endpointValue.songs = response
+      loadState = .success(endpointValue[keyPath: keyPath])
+    } catch {
+      loadState = .failure(.init(errorDescription: error.localizedDescription))
+    }
+  }
+  
   /// /v1/users
   func requestUsers(userDataSource: UserDataSource = .mock) async {
     do {
